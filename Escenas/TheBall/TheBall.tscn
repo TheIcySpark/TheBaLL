@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/TheBall/TheBall.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/icon.png" type="Texture" id=2]
+[ext_resource path="res://Escenas/TheBall/UITheBall.tscn" type="PackedScene" id=3]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 64.0
+
+[node name="TheBall" type="RigidBody2D"]
+physics_material_override = SubResource( 1 )
+script = ExtResource( 1 )
+impulso_carga = 60.0
+velocidad_angular_giro = 5.0
+maxima_carga_disparo = 15.0
+multiplicador_carga_disparo = 20.0
+velocidad_carga = 0.1
+velocidad_descarga = -0.1
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="UITheBall" parent="." instance=ExtResource( 3 )]
