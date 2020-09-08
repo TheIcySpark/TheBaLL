@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="VisualShader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Output:0
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+custom_defines = ""
+graph_offset = Vector2( 0, 63 )
+mode = 1
+modes/blend = 1
+flags/light_only = false
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.321569, 0.419608, 0.623529, 0.588235 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 1, 0, 0, 1, 0, 0.654902, 0.0409314, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CargaDisparo" type="TextureProgress" parent="Control"]
+use_parent_material = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = -56.0
+margin_right = 256.0
+margin_bottom = -24.0
+step = 0.0
+value = 100.0
+texture_under = SubResource( 4 )
+texture_progress = SubResource( 6 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
