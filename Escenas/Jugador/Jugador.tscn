@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Escenas/Jugador/Sprites/Figura circular.png" type="Texture" id=1]
 [ext_resource path="res://Materials/Shader/Desvanecer.tres" type="Material" id=2]
@@ -10,7 +10,22 @@
 [ext_resource path="res://Escenas/Jugador/Sprites/Flecha.gd" type="Script" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 64.0
+radius = 58.5342
+
+[sub_resource type="Animation" id=2]
+resource_name = "muerte"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 
 [node name="Jugador" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -29,7 +44,7 @@ current = true
 zoom = Vector2( 2, 2 )
 
 [node name="Colision" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2( 1, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -41,6 +56,9 @@ material = ExtResource( 7 )
 position = Vector2( 96, 0 )
 texture = ExtResource( 6 )
 script = ExtResource( 8 )
+
+[node name="Animacion" type="AnimationPlayer" parent="Sprite"]
+anims/muerte = SubResource( 2 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 

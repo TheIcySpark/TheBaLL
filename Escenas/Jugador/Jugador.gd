@@ -8,6 +8,7 @@ export var cargando_disparo_damp: float
 
 onready var carga_disparo : TextureProgress = $HUD/Control/CargaDisparo
 onready var flecha: Sprite = $Sprite/Flecha
+onready var animacion_sprite: AnimationPlayer = $Sprite/Animacion
 
 enum Estados{
 	CARGANDO_DISPARO,
@@ -82,7 +83,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event.is_action_pressed("ui_cargar"):
 				_cambio_estado(Estados.CARGANDO_ENERGIA , Estados.CARGANDO_DISPARO)
 
-
+func muerte() -> void:
+	set_process_unhandled_input(false)
+	set_process(false)
+	flecha.aparecer_flecha(0 , 1)
+	animacion_sprite.play("muerte")
+	yield(animacion_sprite, "animation_finished")
+	get_tree().reload_current_scene()
 
 
 

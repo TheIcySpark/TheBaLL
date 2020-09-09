@@ -5,5 +5,8 @@
 
 [node name="NivelPrueba1" instance=ExtResource( 1 )]
 
-[node name="EnemigoBase" parent="." index="3" instance=ExtResource( 2 )]
-position = Vector2( 1312, 1088 )
+[node name="Jugador" parent="." index="2"]
+position = Vector2( 1504, 1280 )
+
+[node name="EnemigoBase5" parent="Enemigos" index="0" instance=ExtResource( 2 )]
+position = Vector2( 2720, 3008 )
